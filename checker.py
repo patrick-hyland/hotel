@@ -35,7 +35,6 @@ def fetch_page():
         )
 
         page.goto(URL, wait_until="networkidle", timeout=60000)
-
         content = page.content()
 
         browser.close()
@@ -44,6 +43,9 @@ def fetch_page():
 
 def main():
     html = fetch_page()
+
+    preview = html.lower()[:20000]
+    print(preview)
 
     if not is_sold_out(html):
         print("✅ Availability found!")
