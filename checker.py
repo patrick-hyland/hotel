@@ -24,7 +24,12 @@ def send_email():
         server.send_message(msg)
 
 def main():
-    response = requests.get(URL, timeout=15)
+    response = session.get(
+        URL,
+        timeout=(5, 60),
+        headers={"User-Agent": "Mozilla/5.0"}
+    )
+
     html = response.text
 
     if not is_sold_out(html):
