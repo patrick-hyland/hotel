@@ -3,7 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 from playwright.sync_api import sync_playwright
 
-URL = "https://www.choicehotels.com/wisconsin/eau-claire/sleep-inn-hotels/wi139?checkInDate=2026-06-19&checkOutDate=2026-06-20"
+URL = "https://www.choicehotels.com/wisconsin/eau-claire/sleep-inn-hotels/wi139?checkInDate=2026-06-19&checkOut=2026-06-20"
 
 EMAIL_ADDRESS = os.environ["EMAIL_ADDRESS"]
 EMAIL_PASSWORD = os.environ["EMAIL_PASSWORD"]
@@ -14,7 +14,7 @@ def is_sold_out(page_content: str) -> bool:
     return "sold out" in page_content.lower()
 
 
-def send_email():
+def send_email(preview: str):
     msg = MIMEText(preview)
     msg["Subject"] = "Hotel Availability Alert"
     msg["From"] = EMAIL_ADDRESS
@@ -49,7 +49,7 @@ def main():
 
     if not is_sold_out(html):
         print("✅ Availability found!")
-        send_email()
+        send_email(preview)
     else:
         print("❌ Still sold out")
 
