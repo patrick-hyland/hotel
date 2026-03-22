@@ -15,7 +15,7 @@ def is_sold_out(page_content: str) -> bool:
 
 
 def send_email():
-    msg = MIMEText(f"Rooms are available!\n\n{URL}")
+    msg = MIMEText(preview)
     msg["Subject"] = "Hotel Availability Alert"
     msg["From"] = EMAIL_ADDRESS
     msg["To"] = TO_EMAIL
