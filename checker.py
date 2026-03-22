@@ -3,6 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 import os
 
+session = requests.Session()
 URL = "https://www.choicehotels.com/wisconsin/eau-claire/sleep-inn-hotels/wi139?checkInDate=2026-06-19&checkOutDate=2026-06-20"
 
 EMAIL_ADDRESS = os.environ["EMAIL_ADDRESS"]
